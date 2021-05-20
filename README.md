@@ -23,4 +23,4 @@ Please contact [Mathew Owens](https://github.com/mathewjowens).
 
 ## Citation
 
-Please cite this software as Owens et al. (2021), Extreme space-weather events and the solar cycle, Sol Phys
+Please cite this software as Owens, M.J., Lockwood, M., Barnard, L.A. et al. Extreme Space-Weather Events and the Solar Cycle. Sol Phys 296, 82 (2021). https://doi.org/10.1007/s11207-021-01831-3
