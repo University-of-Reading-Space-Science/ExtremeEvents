@@ -1070,6 +1070,8 @@ for i in range(0,len(demoSCs)):
 fig = plt.figure(figsize=(12, 5))
 
 #first plot the sunspot number
+linestyles = ['r','b','k--']
+linewidths=[3,1,1]
 ax = plt.subplot(1,3,1)
 for i in range(0,len(demoSCs)):
     n = solarmintimes_df[solarmintimes_df['cyclenum']==demoSCs[i]].index[0]
@@ -1080,11 +1082,12 @@ for i in range(0,len(demoSCs)):
     times = aaH_model.loc[mask,'mjd'] - smjd + startmjd
     
     plt.plot(time.mjd2datetime(times.to_numpy()),
-             aaH_model.loc[mask,'ssn'],
+             aaH_model.loc[mask,'ssn'],linestyles[i],
+             linewidth=linewidths[i],
                  label='SC'+str(demoSCs[i]))
 plt.legend()  
-plt.ylabel('Sunspot number')
-plt.xlabel('Year')
+plt.ylabel('Sunspot number', fontsize=16)
+plt.xlabel('Year',fontsize=16)
 plt.ylim(0,)  
 plt.xlim(datetime(2021,1,1),datetime(2032,1,1)) 
 
@@ -1097,9 +1100,11 @@ plt.title(str(plot_percentiles[1])
               + 'th percentile\n $aa_H$ > {:0.0f} nT'.format(thresh) )    
 for j in range(0,len(demoSCs)):
     plt.plot(forecast['datetime'],forecast['rel_prob'+str(j)] * Nstorms,
+             linestyles[j],
+             linewidth=linewidths[j],
              label='SC'+str(demoSCs[j])+' amplitude and length')
-plt.ylabel('Probability [day$^{-1}$]')
-plt.xlabel('Year')
+plt.ylabel('Probability [day$^{-1}$]',fontsize=16)
+plt.xlabel('Year',fontsize=16)
 plt.ylim(0,)
 plt.xlim(datetime(2021,1,1),datetime(2032,1,1)) 
 
@@ -1112,9 +1117,11 @@ plt.title(str(plot_percentiles[-1])
               + 'th percentile\n $aa_H$ > {:0.0f} nT'.format(thresh) )    
 for j in range(0,len(demoSCs)):
     plt.plot(forecast['datetime'],forecast['rel_prob_extreme'+str(j)] * Nstorms,
+             linestyles[j],
+             linewidth=linewidths[j],
              label='SC'+str(demoSCs[j])+' amplitude and length')
-plt.ylabel('Probability [day$^{-1}$]')
-plt.xlabel('Year')
+plt.ylabel('Probability [day$^{-1}$]',fontsize=16)
+plt.xlabel('Year',fontsize=16)
 plt.ylim(0,)
 plt.xlim(datetime(2021,1,1),datetime(2032,1,1)) 
 
